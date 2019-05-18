@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: menu_business
+
+server:
+  port: 8082
