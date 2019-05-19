@@ -2,6 +2,7 @@ package com.fsabino.menu_business.model;
 
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Stream;
 
 import static java.util.Collections.emptyList;
 
@@ -11,7 +12,7 @@ public class Menu {
     private String description;
     private boolean active;
     private List<Item> items;
-    private List<SubMenu> submenus;
+    private List<Menu> submenus;
 
     public UUID getId() {
         return id;
@@ -21,7 +22,7 @@ public class Menu {
         return items;
     }
 
-    public List<SubMenu> getSubmenus() {
+    public List<Menu> getSubmenus() {
         return submenus;
     }
 
@@ -48,7 +49,7 @@ public class Menu {
                  String description,
                  boolean active,
                  List<Item> items,
-                 List<SubMenu> submenus) {
+                 List<Menu> submenus) {
         this.id = id;
         this.description = description;
         this.active = active;
@@ -61,7 +62,7 @@ public class Menu {
         private String description;
         private boolean active;
         private List<Item> items = emptyList();
-        private List<SubMenu> submenus = emptyList();
+        private List<Menu> submenus = emptyList();
 
         public MenuBuilder id(UUID id) {
             this.id = id;
@@ -83,7 +84,7 @@ public class Menu {
             return this;
         }
 
-        public MenuBuilder submenus(List<SubMenu> submenus) {
+        public MenuBuilder submenus(List<Menu> submenus) {
             this.submenus = submenus;
             return this;
         }
