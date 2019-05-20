@@ -3,6 +3,8 @@ package com.fsabino.menu_business.repository;
 import com.fsabino.menu_business.repository.persistence.ItemData;
 import com.fsabino.menu_business.repository.persistence.MenuData;
 import com.google.common.collect.ImmutableList;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 import java.math.BigDecimal;
@@ -13,13 +15,17 @@ import java.util.UUID;
 @Repository
 public class MenuRepositoryMock implements MenuRepository {
 
+    Logger log = LoggerFactory.getLogger(MenuRepositoryMock.class);
+
     @Override
     public List<MenuData> getAllMenuData() {
+        log.info("GetAllMenuData");
         return createDummyMenusData();
     }
 
     @Override
     public Optional<MenuData> getMenuDataByMenuUUID(UUID uuid) {
+        log.info("GetMenuDataByMenuUUID uuid={}", uuid);
         return createDummyMenusData().stream()
                 .filter(menuData -> menuData.getId().equals(uuid))
                 .findFirst();
