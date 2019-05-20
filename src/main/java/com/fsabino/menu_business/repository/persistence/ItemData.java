@@ -1,9 +1,10 @@
 package com.fsabino.menu_business.repository.persistence;
 
-import com.fsabino.menu_business.model.Item;
-
 import java.math.BigDecimal;
 import java.util.UUID;
+
+import static com.fsabino.menu_business.validation.Validations.checkEmptyParam;
+import static com.fsabino.menu_business.validation.Validations.checkNullParam;
 
 public class ItemData {
 
@@ -111,6 +112,7 @@ public class ItemData {
         }
 
         public ItemDataBuilder name(String name) {
+            checkEmptyParam(name, () -> "name cannot be null");
             this.name = name;
             return this;
         }
@@ -121,6 +123,7 @@ public class ItemData {
         }
 
         public ItemDataBuilder price(BigDecimal price) {
+            checkNullParam(price, () -> "price cannot be null");
             this.price = price;
             return this;
         }
@@ -131,6 +134,7 @@ public class ItemData {
         }
 
         public ItemDataBuilder ranking(Integer ranking) {
+            checkNullParam(ranking, () -> "ranking cannot be null");
             this.ranking = ranking;
             return this;
         }

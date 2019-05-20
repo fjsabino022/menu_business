@@ -14,13 +14,13 @@ class CalculateTotalPriceMenu implements Function<MenuData, BigDecimal> {
 
     Logger log = LoggerFactory.getLogger(CalculateTotalPriceMenu.class);
 
+    //TODO(fsabino): we could multiplicate each currency to transform to peso
     @Override
     public BigDecimal apply(MenuData menuData) {
         log.info("CalculateTotalPriceMenu MenuDataUUID={}", menuData);
         return menuData.flattened()
                 .map(MenuData::getItems)
-                .map(itemsList -> itemsList.stream()
-                        .filter(item -> item.getPrice() != null)
+                .map(items -> items.stream()
                         .map(ItemData::getPrice)
                         .reduce(BigDecimal.ZERO, BigDecimal::add))
                 .reduce(BigDecimal.ZERO, BigDecimal::add);

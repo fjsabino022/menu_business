@@ -8,7 +8,7 @@ import org.springframework.util.StringUtils;
 import java.util.function.Function;
 
 @Component
-class ItemDataToItemConverter implements Function<ItemData, Item> {
+public class ItemDataToItemConverter implements Function<ItemData, Item> {
 
     @Override
     public Item apply(ItemData itemData) {
